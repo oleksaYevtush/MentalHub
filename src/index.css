@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #5A4BDA;
+  --color-primary-hover: #4839C2;
+  --color-secondary: #8B78EA;
+  --color-bg: #F7F5FA;
+  --color-surface: #FFFFFF;
+  --color-text: #2C2638;
+  --color-text-muted: #6D657D;
+  --color-border: #E6E1FA;
+}
+
+html.dark {
+  --color-primary: #A084FC;
+  --color-primary-hover: #8C6DFD;
+  --color-secondary: #C0B3FD;
+  --color-bg: #0E0B16;
+  --color-surface: #191428;
+  --color-text: #F2EFFF;
+  --color-text-muted: #9E96B0;
+  --color-border: #2E2740;
+}
+
+html,
+body {
+  font-family: "Nunito Sans", sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Nunito", sans-serif;
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    -45deg,
+    #f0eaff,
+    #e8f4fc,
+    #fdeef3,
+    #e5e0fa,
+    #eef9f4
+  );
+  background-size: 400% 400%;
+  animation: hero-gradient-shift 18s ease infinite;
+}
+
+html.dark .hero-gradient {
+  background: linear-gradient(
+    -45deg,
+    #1e1735,
+    #1a2240,
+    #2a1a38,
+    #12182e,
+    #0e0b16
+  );
+  background-size: 400% 400%;
+}
+
+@keyframes hero-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient {
+    animation: none;
+    background-position: 0% 50%;
+  }
+}
