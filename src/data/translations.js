@@ -12,6 +12,7 @@ export const translations = {
     },
     hero: {
       title: "Ти не один.",
+      subtitle: "Війна впливає на кожного по-різному. Тривога, виснаження, проблеми зі сном, злість або байдужість — не завжди означають, що з тобою щось не так.",
       description: "Ментальне здоров'я під час війни — це не слабкість. Це турбота про себе.",
       buttons: {
         test: "Пройти тест на стрес",
@@ -119,6 +120,7 @@ export const translations = {
     },
     hero: {
       title: "You are not alone.",
+      subtitle: "War affects everyone differently. Anxiety, exhaustion, sleep problems, anger, or numbness — don't always mean something is wrong with you.",
       description: "Mental health during war is not a weakness. It is self-care.",
       buttons: {
         test: "Take Stress Test",
@@ -226,6 +228,7 @@ export const translations = {
     },
     hero: {
       title: "Du bist nicht allein.",
+      subtitle: "Der Krieg betrifft jeden anders. Angst, Erschöpfung, Schlafprobleme, Wut oder Gleichgültigkeit — bedeuten nicht immer, dass etwas mit dir nicht stimmt.",
       description: "Mentale Gesundheit während des Krieges ist keine Schwäche. Es ist Selbstfürsorge.",
       buttons: {
         test: "Stresstest machen",

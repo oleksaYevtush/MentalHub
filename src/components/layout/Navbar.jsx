@@ -27,7 +27,7 @@ export default function Navbar() {
       : "text-muted hover:text-primary";
 
   return (
-    <nav className="bg-surface border-b border-default px-6 py-4 flex items-center justify-between transition-colors duration-200">
+    <nav className="sticky top-0 z-40 bg-surface border-b border-default px-6 py-4 flex items-center justify-between transition-colors duration-200 shadow-sm">
       <Link to="/" className="font-semibold text-default">
         {t("navbar.brand")}
       </Link>

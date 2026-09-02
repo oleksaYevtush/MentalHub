@@ -11,6 +11,9 @@ export default function Hero() {
         <h1 className="text-4xl font-bold text-default mb-4">
           {t("hero.title")}
         </h1>
+        <p className="text-base text-muted mb-4 max-w-xl mx-auto leading-relaxed opacity-80">
+          {t("hero.subtitle")}
+        </p>
         <p className="text-xl text-muted mb-8 max-w-xl mx-auto leading-relaxed">
           {t("hero.description")}
         </p>
