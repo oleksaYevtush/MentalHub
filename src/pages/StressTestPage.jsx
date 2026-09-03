@@ -1,7 +1,7 @@
-import useTestStore from "../store/useTestStore";
-import TestProgress from "../components/test/TestProgress";
-import QuestionCard from "../components/test/QuestionCard";
-import TestResult from "../components/test/TestResult";
+import useTestStore from '../store/useTestStore';
+import TestProgress from '../components/test/TestProgress';
+import QuestionCard from '../components/test/QuestionCard';
+import TestResult from '../components/test/TestResult';
 
 export default function StressTestPage() {
   const { isFinished } = useTestStore();

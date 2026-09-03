@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import Button from "../ui/Button";
-import { useLanguage } from "../../context/LanguageContext";
+import { Link } from 'react-router-dom';
+import Button from '../ui/Button';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -8,24 +8,30 @@ export default function Hero() {
   return (
     <section className="hero-gradient relative overflow-hidden px-6 py-20 text-center">
       <div className="relative z-10">
-        <h1 className="text-4xl font-bold text-default mb-4">
-          {t("hero.title")}
-        </h1>
-        <p className="text-base text-muted mb-4 max-w-xl mx-auto leading-relaxed opacity-80">
-          {t("hero.subtitle")}
+        <h1 className="text-4xl sm:text-5xl font-bold text-default mb-4">{t('hero.title')}</h1>
+        {/* Mobile short subtitle */}
+        <p className="text-base text-muted mb-4 max-w-xl mx-auto leading-relaxed opacity-90 sm:hidden">
+          {t('hero.subtitleShort')}
         </p>
-        <p className="text-xl text-muted mb-8 max-w-xl mx-auto leading-relaxed">
-          {t("hero.description")}
+        {/* Desktop/full subtitle */}
+        <p className="hidden sm:block text-base text-muted mb-4 max-w-xl mx-auto leading-relaxed opacity-80">
+          {t('hero.subtitle')}
+        </p>
+        {/* Mobile short description */}
+        <p className="text-lg text-muted mb-6 max-w-xl mx-auto leading-relaxed sm:hidden">
+          {t('hero.descriptionShort')}
+        </p>
+        {/* Desktop/full description */}
+        <p className="hidden sm:block text-xl text-muted mb-8 max-w-xl mx-auto leading-relaxed">
+          {t('hero.description')}
         </p>
         <div className="flex gap-4 justify-center items-center flex-wrap">
           <Link to="/test">
-            <Button size="lg">
-              {t("hero.buttons.test")}
-            </Button>
+            <Button size="lg">{t('hero.buttons.test')}</Button>
           </Link>
           <Link to="/tracker">
             <Button variant="outline" size="lg">
-              {t("hero.buttons.tracker")}
+              {t('hero.buttons.tracker')}
             </Button>
           </Link>
         </div>

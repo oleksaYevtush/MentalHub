@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { silentStories } from "../../data/silentStories";
-import StoryModal from "./StoryModal";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { silentStories } from '../../data/silentStories';
+import StoryModal from './StoryModal';
 
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.08, duration: 0.45, ease: "easeOut" },
+    transition: { delay: i * 0.08, duration: 0.45, ease: 'easeOut' },
   }),
 };
 
@@ -35,13 +35,13 @@ export default function SilentStoriesSection() {
               <span>🕊️</span>
               <span>Безпечний простір чесності</span>
             </div>
-            
+
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-default mb-4">
               Про що ми мовчимо
             </h2>
-            
+
             <p className="text-muted text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              Думки, які ми часто соромимося вимовити вголос, але які щодня проживають тисячі з нас. 
+              Думки, які ми часто соромимося вимовити вголос, але які щодня проживають тисячі з нас.
               Ти не один у тому, що відчуваєш.
             </p>
           </motion.div>
@@ -64,13 +64,15 @@ export default function SilentStoriesSection() {
                   hover:bg-white dark:hover:bg-white/[0.07]
                   backdrop-blur-sm transition-all duration-300
                   shadow-sm hover:shadow-xl hover:shadow-primary/10 dark:shadow-lg dark:hover:shadow-purple-950/40
-                  ${i === 0 ? "md:col-span-2 lg:col-span-1" : ""}
+                  ${i === 0 ? 'md:col-span-2 lg:col-span-1' : ''}
                 `}
               >
                 <div>
                   {/* Tag & Quote mark */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className={`text-xs font-semibold px-3 py-1 rounded-full ${item.tagColor}`}>
+                    <span
+                      className={`text-xs font-semibold px-3 py-1 rounded-full ${item.tagColor}`}
+                    >
                       {item.tag}
                     </span>
                     <span className="text-3xl font-serif text-primary/20 dark:text-white/20 select-none group-hover:text-primary/40 dark:group-hover:text-purple-300/40 transition-colors">
@@ -123,10 +125,7 @@ export default function SilentStoriesSection() {
 
       {/* Story Modal */}
       {selectedStory && (
-        <StoryModal
-          storyItem={selectedStory}
-          onClose={() => setSelectedStory(null)}
-        />
+        <StoryModal storyItem={selectedStory} onClose={() => setSelectedStory(null)} />
       )}
     </>
   );

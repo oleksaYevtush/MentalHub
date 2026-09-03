@@ -1,18 +1,18 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect } from 'react';
 
 export default function StoryModal({ storyItem, onClose }) {
   useEffect(() => {
-    const handleKey = (e) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
+    const handleKey = (e) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
   }, [onClose]);
 
   useEffect(() => {
     window.__lenis?.stop();
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
       window.__lenis?.start();
     };
   }, []);
@@ -42,7 +42,7 @@ export default function StoryModal({ storyItem, onClose }) {
           initial={{ opacity: 0, scale: 0.94, y: 24 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.94, y: 24 }}
-          transition={{ type: "spring", damping: 26, stiffness: 280 }}
+          transition={{ type: 'spring', damping: 26, stiffness: 280 }}
         >
           {/* Header */}
           <div className="relative px-8 pt-8 pb-6 border-b border-purple-100/80 dark:border-white/10 bg-gradient-to-b from-purple-50/70 to-transparent dark:from-white/[0.05] dark:to-transparent shrink-0">
@@ -53,7 +53,9 @@ export default function StoryModal({ storyItem, onClose }) {
 
             <div className="flex items-start justify-between gap-4">
               <div className="space-y-2">
-                <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full ${storyItem.tagColor}`}>
+                <span
+                  className={`inline-block text-xs font-semibold px-3 py-1 rounded-full ${storyItem.tagColor}`}
+                >
                   {storyItem.tag}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold text-default dark:text-white tracking-tight leading-snug">
@@ -66,7 +68,14 @@ export default function StoryModal({ storyItem, onClose }) {
                 className="shrink-0 text-muted hover:text-default hover:bg-black/5 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/10 transition-colors rounded-full w-9 h-9 flex items-center justify-center cursor-pointer"
                 aria-label="Закрити"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </button>
