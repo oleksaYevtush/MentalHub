@@ -24,9 +24,7 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-40 bg-surface border-b border-default px-6 py-4 flex items-center justify-between transition-colors duration-200 shadow-sm">
-      <Link to="/" className="font-semibold text-default">
-        {t('navbar.brand')}
-      </Link>
+      <Link to="/" className="font-semibold text-default">MentalHub</Link>
       <div className="flex items-center gap-6">
         <div className="flex gap-6">
           <NavLink to="/" className={linkClass} end>
