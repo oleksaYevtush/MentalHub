@@ -21,8 +21,6 @@ export default function SymptomModal({ symptom, onClose }) {
 
   if (!symptom) return null;
 
-  const blocks = [symptom.meaning, symptom.actions, symptom.help];
-
   return (
     <AnimatePresence>
       {/* Overlay */}
