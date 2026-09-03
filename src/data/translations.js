@@ -1,7 +1,7 @@
 export const translations = {
   uk: {
     navbar: {
-      brand: 'МентальнеUA',
+      brand: 'MentalHub',
       home: 'Головна',
       stressTest: 'Тест на стрес',
       moodTracker: 'Трекер настрою',
@@ -120,7 +120,7 @@ export const translations = {
   },
   en: {
     navbar: {
-      brand: 'MentalUA',
+      brand: 'MentalHub',
       home: 'Home',
       stressTest: 'Stress Test',
       moodTracker: 'Mood Tracker',
@@ -239,7 +239,7 @@ export const translations = {
   },
   de: {
     navbar: {
-      brand: 'MentalUA',
+      brand: 'MentalHub',
       home: 'Startseite',
       stressTest: 'Stresstest',
       moodTracker: 'Stimmungs-Tracker',
