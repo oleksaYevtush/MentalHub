@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { questions } from "../data/questions";
+import { create } from 'zustand';
+import { questions } from '../data/questions';
 
 const useTestStore = create((set, get) => ({
   currentQuestion: 0,

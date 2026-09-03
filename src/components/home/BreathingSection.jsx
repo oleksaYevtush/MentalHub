@@ -1,6 +1,6 @@
-import Card from "../ui/Card";
-import BreathingExercise from "./BreathingExercise";
-import { useLanguage } from "../../context/LanguageContext";
+import Card from '../ui/Card';
+import BreathingExercise from './BreathingExercise';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function BreathingSection() {
   const { t } = useLanguage();
@@ -17,10 +17,10 @@ export default function BreathingSection() {
             🌬️
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-default mb-2">
-            {t("breathingSection.title")}
+            {t('breathingSection.title')}
           </h2>
           <p className="text-muted text-sm md:text-base leading-relaxed mb-4">
-            {t("breathingSection.description")}
+            {t('breathingSection.description')}
           </p>
 
           <div className="bg-bg/60 backdrop-blur-sm rounded-2xl p-4 border border-border/80 shadow-inner">

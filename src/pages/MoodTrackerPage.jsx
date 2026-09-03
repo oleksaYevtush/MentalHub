@@ -1,6 +1,6 @@
-import MoodCheckIn from "../components/tracker/MoodCheckIn";
-import MoodChart from "../components/tracker/MoodChart";
-import MoodHistory from "../components/tracker/MoodHistory";
+import MoodCheckIn from '../components/tracker/MoodCheckIn';
+import MoodChart from '../components/tracker/MoodChart';
+import MoodHistory from '../components/tracker/MoodHistory';
 
 export default function MoodTrackerPage() {
   return (

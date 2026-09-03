@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 const useMoodStore = create(
   persist(
@@ -8,7 +8,7 @@ const useMoodStore = create(
       addEntry: (entry) => set({ entries: [...get().entries, entry] }),
       clearEntries: () => set({ entries: [] }),
     }),
-    { name: "mood-storage" }
+    { name: 'mood-storage' }
   )
 );
 

@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { symptoms } from "../../data/symptoms";
-import SymptomModal from "./SymptomModal";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { symptoms } from '../../data/symptoms';
+import SymptomModal from './SymptomModal';
 
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" },
+    transition: { delay: i * 0.08, duration: 0.4, ease: 'easeOut' },
   }),
 };
 
@@ -27,9 +27,7 @@ export default function SymptomsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-bold text-default mb-3">
-              Що з тобою відбувається?
-            </h2>
+            <h2 className="text-3xl font-bold text-default mb-3">Що з тобою відбувається?</h2>
             <p className="text-muted text-base max-w-lg mx-auto">
               Натисни на те, що найбільше схоже на твій стан — і дізнайся більше
             </p>
@@ -62,9 +60,7 @@ export default function SymptomsSection() {
                 </span>
 
                 {/* Title */}
-                <h3 className={`font-bold text-lg mb-2 ${symptom.accentColor}`}>
-                  {symptom.title}
-                </h3>
+                <h3 className={`font-bold text-lg mb-2 ${symptom.accentColor}`}>{symptom.title}</h3>
 
                 {/* Short desc */}
                 <p className="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">
@@ -72,7 +68,9 @@ export default function SymptomsSection() {
                 </p>
 
                 {/* Arrow hint */}
-                <div className={`mt-4 flex items-center gap-1 text-xs font-semibold ${symptom.accentColor} opacity-75 group-hover:opacity-100 transition-opacity`}>
+                <div
+                  className={`mt-4 flex items-center gap-1 text-xs font-semibold ${symptom.accentColor} opacity-75 group-hover:opacity-100 transition-opacity`}
+                >
                   <span>Дізнатися більше</span>
                   <svg
                     width="14"
@@ -93,9 +91,7 @@ export default function SymptomsSection() {
       </section>
 
       {/* Modal */}
-      {selected && (
-        <SymptomModal symptom={selected} onClose={() => setSelected(null)} />
-      )}
+      {selected && <SymptomModal symptom={selected} onClose={() => setSelected(null)} />}
     </>
   );
 }
