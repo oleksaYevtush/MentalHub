@@ -1,123 +1,136 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { silentStories } from "../../data/silentStories";
+import { motion, AnimatePresence } from "framer-motion";
+import { getSilentStories } from "../../data/silentStories";
+import { useLanguage } from "../../context/LanguageContext";
 import StoryModal from "./StoryModal";
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.08, duration: 0.45, ease: "easeOut" },
-  }),
-};
-
 export default function SilentStoriesSection() {
+  const { locale, t } = useLanguage();
   const [selectedStory, setSelectedStory] = useState(null);
+  const [selectedTag, setSelectedTag] = useState(t("silentStoriesSection.all"));
+  const [solidarityCounts, setSolidarityCounts] = useState({
+    "war-fatigue": 342,
+    "safe-but-scared": 289,
+    "cant-be-happy": 412,
+    "irritated-by-loved-ones": 195,
+  });
+
+  const stories = getSilentStories(locale);
+  const allLabel = t("silentStoriesSection.all");
+
+  const tags = [allLabel, ...new Set(stories.map((s) => s.tag))];
+
+  // If selected tag is not in current language tags, reset to all
+  const activeTag = tags.includes(selectedTag) ? selectedTag : allLabel;
+
+  const filteredStories =
+    activeTag === allLabel
+      ? stories
+      : stories.filter((s) => s.tag === activeTag);
+
+  const toggleSolidarity = (id, e) => {
+    e.stopPropagation();
+    setSolidarityCounts((prev) => ({
+      ...prev,
+      [id]: (prev[id] || 0) + 1,
+    }));
+  };
 
   return (
     <>
-      <section className="relative px-6 py-20 bg-gradient-to-b from-[#FAF8FD] via-[#F4EFFB] to-[#FAF8FD] dark:from-[#120F1D] dark:via-[#161324] dark:to-[#120F1D] transition-colors duration-200 overflow-hidden">
-        {/* Subtle atmospheric glow behind cards */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-purple-200/50 dark:bg-purple-900/15 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-10 right-10 w-[400px] h-[300px] bg-indigo-200/40 dark:bg-indigo-900/15 rounded-full blur-[100px] pointer-events-none" />
-
-        <div className="relative z-10 max-w-5xl mx-auto">
-          {/* Header */}
-          <motion.div
-            className="text-center mb-14"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-medium text-primary dark:bg-white/[0.07] dark:border-white/10 dark:text-purple-200 mb-4 tracking-wide">
-              <span>🕊️</span>
-              <span>Безпечний простір чесності</span>
+      <section id="silent-stories" className="relative px-4 sm:px-8 py-16 sm:py-24 border-b border-default paper-texture">
+        <div className="max-w-6xl mx-auto">
+          {/* Section Masthead Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-10 border-b border-default gap-6">
+            <div>
+              <div className="flex items-center gap-2 mb-3 text-xs font-mono text-muted uppercase tracking-widest">
+                <span className="text-secondary font-bold">{t("silentStoriesSection.tag")}</span>
+                <span>•</span>
+                <span>{t("silentStoriesSection.category")}</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-semibold text-default tracking-tight">
+                {t("silentStoriesSection.title")}
+              </h2>
+              <p className="mt-2 text-sm sm:text-base text-muted max-w-xl">
+                {t("silentStoriesSection.subtitle")}
+              </p>
             </div>
-            
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-default mb-4">
-              Про що ми мовчимо
-            </h2>
-            
-            <p className="text-muted text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              Думки, які ми часто соромимося вимовити вголос, але які щодня проживають тисячі з нас. 
-              Ти не один у тому, що відчуваєш.
-            </p>
-          </motion.div>
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {silentStories.map((item, i) => (
-              <motion.div
-                key={item.id}
-                custom={i}
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className={`
-                  group relative flex flex-col justify-between p-6 sm:p-7 rounded-3xl
-                  bg-white/90 dark:bg-white/[0.04] border border-purple-100/80 dark:border-white/[0.08]
-                  hover:border-primary/40 dark:hover:border-purple-400/40
-                  hover:bg-white dark:hover:bg-white/[0.07]
-                  backdrop-blur-sm transition-all duration-300
-                  shadow-sm hover:shadow-xl hover:shadow-primary/10 dark:shadow-lg dark:hover:shadow-purple-950/40
-                  ${i === 0 ? "md:col-span-2 lg:col-span-1" : ""}
-                `}
-              >
-                <div>
-                  {/* Tag & Quote mark */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`text-xs font-semibold px-3 py-1 rounded-full ${item.tagColor}`}>
-                      {item.tag}
-                    </span>
-                    <span className="text-3xl font-serif text-primary/20 dark:text-white/20 select-none group-hover:text-primary/40 dark:group-hover:text-purple-300/40 transition-colors">
-                      “
-                    </span>
-                  </div>
-
-                  {/* Quote text */}
-                  <blockquote className="text-lg sm:text-xl font-semibold text-default dark:text-slate-100 leading-snug tracking-tight mb-6">
-                    {item.quote}
-                  </blockquote>
-                </div>
-
-                {/* Button */}
-                <div className="pt-2">
-                  <button
-                    onClick={() => setSelectedStory(item)}
-                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-primary/10 group-hover:bg-primary text-primary group-hover:text-white dark:bg-white/[0.08] dark:group-hover:bg-purple-600/80 dark:text-white text-sm font-semibold transition-all duration-200 border border-primary/20 group-hover:border-transparent dark:border-white/10 dark:group-hover:border-purple-400/50 cursor-pointer"
-                  >
-                    <span>Читати історію</span>
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      className="transform group-hover:translate-x-0.5 transition-transform"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              </motion.div>
-            ))}
+            {/* Filter Pills */}
+            <div className="flex flex-wrap items-center gap-1.5">
+              {tags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => setSelectedTag(tag)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer ${
+                    activeTag === tag
+                      ? "bg-primary text-white font-semibold"
+                      : "bg-surface border border-default text-muted hover:text-default hover:border-default"
+                  }`}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Bottom note */}
-          <motion.div
-            className="mt-12 text-center text-sm text-muted"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-          >
-            Всі переживання анонімізовані та засновані на типовому досвіді українців під час війни.
+          {/* Editorial Stories Layout */}
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <AnimatePresence>
+              {filteredStories.map((item, i) => (
+                <motion.article
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.25, delay: i * 0.05 }}
+                  onClick={() => setSelectedStory(item)}
+                  className="group relative flex flex-col justify-between p-7 rounded-2xl bg-surface border border-default hover:border-primary/60 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-sm"
+                >
+                  <div>
+                    {/* Top Metadata Line */}
+                    <div className="flex items-center justify-between border-b border-default/70 pb-3 mb-5 text-xs font-mono text-muted">
+                      <span className="uppercase tracking-wider">
+                        № 0{i + 1} • {item.tag}
+                      </span>
+                      <span className="text-muted/60 group-hover:text-primary transition-colors">
+                        {t("silentStoriesSection.clickToRead")} ↗
+                      </span>
+                    </div>
+
+                    {/* Big Editorial Quote */}
+                    <blockquote className="text-xl sm:text-2xl font-serif italic text-default leading-snug tracking-tight mb-6">
+                      «{item.quote}»
+                    </blockquote>
+                  </div>
+
+                  {/* Bottom Footer Actions */}
+                  <div className="pt-4 border-t border-default/60 flex items-center justify-between">
+                    <span className="text-xs font-medium text-primary group-hover:underline underline-offset-4 flex items-center gap-1">
+                      <span>{item.story.title}</span>
+                      <span>→</span>
+                    </span>
+
+                    <button
+                      onClick={(e) => toggleSolidarity(item.id, e)}
+                      title={t("silentStoriesSection.resonated")}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono bg-surfaceSubtle border border-default hover:border-secondary/40 text-muted hover:text-secondary transition-colors"
+                    >
+                      <span>🤝</span>
+                      <span>{solidarityCounts[item.id] || 250}</span>
+                      <span className="hidden sm:inline text-[10px]">{t("silentStoriesSection.resonated")}</span>
+                    </button>
+                  </div>
+                </motion.article>
+              ))}
+            </AnimatePresence>
           </motion.div>
+
+          {/* Bottom Footnote */}
+          <div className="mt-12 text-center text-xs font-mono text-muted border-t border-default/60 pt-6">
+            {t("silentStoriesSection.footnote")}
+          </div>
         </div>
       </section>
 

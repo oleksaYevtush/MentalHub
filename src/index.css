@@ -3,30 +3,87 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #5A4BDA;
-  --color-primary-hover: #4839C2;
-  --color-secondary: #8B78EA;
-  --color-bg: #F7F5FA;
+  /* Requested Color Palette (Bioluminescent Ocean / Jellyfish):
+     Phlox: #CAA9F3
+     Verbena: #B37AD4
+     Periwinkle: #7997E6
+     Atlantis: #206ABC
+     Phthalo Blue: #0E155E
+  */
+  --color-phlox: #CAA9F3;           /* Phlox */
+  --color-verbena: #B37AD4;         /* Verbena */
+  --color-periwinkle: #7997E6;      /* Periwinkle */
+  --color-atlantis: #206ABC;        /* Atlantis */
+  --color-phthalo: #0E155E;         /* Phthalo Blue */
+
+  --color-primary: #206ABC;         /* Atlantis as vibrant primary */
+  --color-primary-hover: #0E155E;   /* Phthalo Blue on hover */
+  --color-secondary: #B37AD4;       /* Verbena */
+  --color-accent: #7997E6;          /* Periwinkle */
+  
+  --color-bg: #F5F7FD;              /* Luminous periwinkle-tinted light canvas */
   --color-surface: #FFFFFF;
-  --color-text: #2C2638;
-  --color-text-muted: #6D657D;
-  --color-border: #E6E1FA;
+  --color-surface-subtle: #EDF1FC;   /* Soft periwinkle mist */
+  --color-text: #0E155E;            /* High-contrast Phthalo Blue deep ink */
+  --color-text-muted: #4F5E8D;      /* Oceanic slate periwinkle */
+  --color-border: #D1D9F5;          /* Delicate Periwinkle hairline */
+  --color-card-border: #BCC8F0;
 }
 
 html.dark {
-  --color-primary: #A084FC;
-  --color-primary-hover: #8C6DFD;
-  --color-secondary: #C0B3FD;
-  --color-bg: #0E0B16;
-  --color-surface: #191428;
-  --color-text: #F2EFFF;
-  --color-text-muted: #9E96B0;
-  --color-border: #2E2740;
+  --color-primary: #7997E6;         /* Luminous Periwinkle */
+  --color-primary-hover: #CAA9F3;   /* Glowing Phlox */
+  --color-secondary: #B37AD4;       /* Verbena */
+  --color-accent: #CAA9F3;          /* Phlox */
+  --color-phlox: #CAA9F3;
+  --color-verbena: #B37AD4;
+  --color-periwinkle: #7997E6;
+  --color-atlantis: #206ABC;
+  --color-phthalo: #0E155E;
+
+  --color-bg: #070A22;              /* Deep oceanic Phthalo abyss */
+  --color-surface: #0E155E;         /* Phthalo Blue surface */
+  --color-surface-subtle: #172175;   /* Elevated oceanic layer */
+  --color-text: #F3F5FD;            /* Crystalline bioluminescent ice */
+  --color-text-muted: #A6B4E5;      /* Luminous periwinkle mist */
+  --color-border: #23318C;
+  --color-card-border: #3142B2;
+}
+
+/* Bioluminescent jellyfish ambient lighting */
+.ocean-ambient {
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(179, 122, 212, 0.12) 0px, transparent 50%),
+    radial-gradient(at 90% 15%, rgba(121, 151, 230, 0.14) 0px, transparent 50%),
+    radial-gradient(at 30% 85%, rgba(32, 106, 188, 0.12) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(202, 169, 243, 0.12) 0px, transparent 50%);
+}
+
+.dark .ocean-ambient {
+  background-image: 
+    radial-gradient(at 15% 20%, rgba(179, 122, 212, 0.22) 0px, transparent 55%),
+    radial-gradient(at 85% 15%, rgba(121, 151, 230, 0.22) 0px, transparent 55%),
+    radial-gradient(at 30% 85%, rgba(32, 106, 188, 0.25) 0px, transparent 55%),
+    radial-gradient(at 80% 80%, rgba(202, 169, 243, 0.2) 0px, transparent 55%);
+}
+
+/* Jellyfish Glowing Accents */
+.glow-phlox {
+  box-shadow: 0 0 20px -3px rgba(202, 169, 243, 0.45);
+}
+.glow-verbena {
+  box-shadow: 0 0 20px -3px rgba(179, 122, 212, 0.45);
+}
+.glow-periwinkle {
+  box-shadow: 0 0 20px -3px rgba(121, 151, 230, 0.45);
+}
+.glow-atlantis {
+  box-shadow: 0 0 20px -3px rgba(32, 106, 188, 0.45);
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 5.5rem;
 }
 
 html.lenis,
@@ -52,10 +109,12 @@ html.lenis body {
 
 html,
 body {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Manrope", sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -64,49 +123,39 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Nunito", sans-serif;
+  font-family: "Lora", serif;
+  letter-spacing: -0.015em;
 }
 
-.hero-gradient {
-  background: linear-gradient(
-    -45deg,
-    #f0eaff,
-    #e8f4fc,
-    #fdeef3,
-    #e5e0fa,
-    #eef9f4
-  );
-  background-size: 400% 400%;
-  animation: hero-gradient-shift 18s ease infinite;
+/* Editorial subtle paper texture */
+.paper-texture {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 0);
+  background-size: 24px 24px;
 }
 
-html.dark .hero-gradient {
-  background: linear-gradient(
-    -45deg,
-    #1e1735,
-    #1a2240,
-    #2a1a38,
-    #12182e,
-    #0e0b16
-  );
-  background-size: 400% 400%;
+html.dark .paper-texture {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
 }
 
-@keyframes hero-gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* Tactile subtle borders and dividers */
+.archival-border {
+  border: 1px solid var(--color-border);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-gradient {
-    animation: none;
-    background-position: 0% 50%;
-  }
+/* Custom organic scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
 }

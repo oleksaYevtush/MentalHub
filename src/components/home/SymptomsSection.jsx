@@ -1,90 +1,67 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { symptoms } from "../../data/symptoms";
+import { getSymptoms } from "../../data/symptoms";
+import { useLanguage } from "../../context/LanguageContext";
 import SymptomModal from "./SymptomModal";
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" },
-  }),
-};
-
 export default function SymptomsSection() {
+  const { locale, t } = useLanguage();
   const [selected, setSelected] = useState(null);
+  const symptoms = getSymptoms(locale);
 
   return (
     <>
-      <section className="px-6 py-16 bg-gradient-to-b from-white via-[#FAF8FD] to-white dark:from-[#0E0B16] dark:via-[#130F1F] dark:to-[#100C1B] transition-colors duration-200">
-        <div className="max-w-4xl mx-auto">
+      <section id="symptoms-section" className="px-4 sm:px-8 py-16 sm:py-24 border-b border-default paper-texture">
+        <div className="max-w-6xl mx-auto">
           {/* Heading */}
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold text-default mb-3">
-              Що з тобою відбувається?
+          <div className="max-w-2xl mb-12">
+            <div className="flex items-center gap-2 mb-3 text-xs font-mono text-muted uppercase tracking-widest">
+              <span className="text-secondary font-bold">{t("symptomsSection.tag")}</span>
+              <span>•</span>
+              <span>{t("symptomsSection.category")}</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-semibold text-default tracking-tight">
+              {t("symptomsSection.title")}
             </h2>
-            <p className="text-muted text-base max-w-lg mx-auto">
-              Натисни на те, що найбільше схоже на твій стан — і дізнайся більше
+            <p className="mt-3 text-sm sm:text-base text-muted leading-relaxed">
+              {t("symptomsSection.subtitle")}
             </p>
-          </motion.div>
+          </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {symptoms.map((symptom, i) => (
               <motion.button
                 key={symptom.id}
-                custom={i}
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.03, y: -4 }}
-                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.3, delay: i * 0.05 }}
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.99 }}
                 onClick={() => setSelected(symptom)}
-                className={`
-                  group text-left p-5 rounded-2xl border-2 bg-gradient-to-br
-                  transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md
-                  ${symptom.color}
-                `}
+                className="group text-left p-6 rounded-2xl bg-surface border border-default hover:border-primary/50 transition-all duration-200 cursor-pointer shadow-xs flex flex-col justify-between"
               >
-                {/* Icon */}
-                <span
-                  className={`inline-flex items-center justify-center w-12 h-12 rounded-xl text-2xl mb-4 transition-transform duration-200 group-hover:scale-110 ${symptom.iconBg}`}
-                >
-                  {symptom.icon}
-                </span>
+                <div>
+                  <div className="flex items-center justify-between border-b border-default/70 pb-3 mb-4">
+                    <span className="text-xs font-mono text-muted">
+                      [ {t("symptomsSection.catalog")} #0{i + 1} ]
+                    </span>
+                    <span className="text-2xl">{symptom.icon}</span>
+                  </div>
 
-                {/* Title */}
-                <h3 className={`font-bold text-lg mb-2 ${symptom.accentColor}`}>
-                  {symptom.title}
-                </h3>
+                  <h3 className="font-serif font-semibold text-lg sm:text-xl text-default mb-2 group-hover:text-primary transition-colors">
+                    {symptom.title}
+                  </h3>
 
-                {/* Short desc */}
-                <p className="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">
-                  «{symptom.short}»
-                </p>
+                  <p className="text-xs sm:text-sm text-muted leading-relaxed mb-4">
+                    «{symptom.short}»
+                  </p>
+                </div>
 
-                {/* Arrow hint */}
-                <div className={`mt-4 flex items-center gap-1 text-xs font-semibold ${symptom.accentColor} opacity-75 group-hover:opacity-100 transition-opacity`}>
-                  <span>Дізнатися більше</span>
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    className="transform group-hover:translate-x-0.5 transition-transform"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
+                <div className="pt-3 border-t border-default/60 flex items-center justify-between text-xs font-mono text-primary group-hover:underline underline-offset-4">
+                  <span>{t("symptomsSection.analysis")}</span>
+                  <span>→</span>
                 </div>
               </motion.button>
             ))}

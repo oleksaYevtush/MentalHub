@@ -1,31 +1,69 @@
-import Card from "../ui/Card";
 import useMoodStore from "../../store/useMoodStore";
 import { formatDate } from "../../utils/formatDate";
 import { useLanguage } from "../../context/LanguageContext";
 
-const emojis = { 1: "😔", 2: "😕", 3: "😐", 4: "🙂", 5: "😊" };
+const moodEmojis = {
+  1: "🌑",
+  2: "🌧️",
+  3: "☁️",
+  4: "🌤️",
+  5: "☀️",
+};
 
 export default function MoodHistory() {
   const { locale, t } = useLanguage();
   const { entries } = useMoodStore();
-  const recent = [...entries].reverse().slice(0, 5);
+  const recent = [...entries].reverse().slice(0, 8);
 
   if (recent.length === 0) return null;
 
   return (
-    <Card>
-      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t("tracker.historyTitle")}</h2>
-      <div className="space-y-3">
-        {recent.map((e, i) => (
-          <div key={i} className="flex items-center gap-3 py-2 border-b border-gray-100 dark:border-gray-800 last:border-0">
-            <span className="text-2xl">{emojis[e.mood]}</span>
-            <div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">{formatDate(e.date, locale)}</div>
-              {e.note && <div className="text-sm text-gray-700 dark:text-gray-300">{e.note}</div>}
-            </div>
-          </div>
-        ))}
+    <div className="bg-surface border border-default rounded-2xl p-6 sm:p-8 shadow-xs">
+      <div className="flex items-center justify-between border-b border-default/70 pb-3 mb-6">
+        <span className="text-xs font-mono text-muted uppercase">
+          {t("tracker.archiveTag")}
+        </span>
+        <span className="text-xs font-mono text-muted">
+          {t("tracker.totalEntries", { count: entries.length })}
+        </span>
       </div>
-    </Card>
+
+      <h2 className="text-lg sm:text-xl font-serif font-semibold text-default mb-4">
+        {t("tracker.historyTitle")}
+      </h2>
+
+      <div className="space-y-3">
+        {recent.map((e, i) => {
+          const emoji = moodEmojis[e.mood] || "📝";
+          const label = t(`tracker.moodLabels.${e.mood}`) || t("tracker.moodLabels.default");
+          return (
+            <div
+              key={i}
+              className="p-4 rounded-xl bg-surfaceSubtle border border-default flex items-start gap-3.5"
+            >
+              <div className="w-10 h-10 rounded-lg bg-surface border border-default flex items-center justify-center text-xl shrink-0">
+                {emoji}
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <span className="text-xs font-mono font-bold text-default">
+                    {label}
+                  </span>
+                  <span className="text-[11px] font-mono text-muted">
+                    {formatDate(e.date, locale)}
+                  </span>
+                </div>
+                {e.note && (
+                  <p className="text-xs sm:text-sm text-default/90 font-sans leading-relaxed break-words">
+                    {e.note}
+                  </p>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }

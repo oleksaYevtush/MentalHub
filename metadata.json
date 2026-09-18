@@ -1,0 +1,8 @@
+{
+  "name": "MentalHub",
+  "description": "Платформа підтримки ментального здоров'я під час війни з трекером настрою, тестами рівня стресу та дихальними практиками.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

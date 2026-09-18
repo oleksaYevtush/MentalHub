@@ -1,32 +1,38 @@
 import { useLanguage } from "../../context/LanguageContext";
 
 const moods = [
-  { value: 1, emoji: "😔", key: "bad" },
-  { value: 2, emoji: "😕", key: "anxious" },
-  { value: 3, emoji: "😐", key: "normal" },
-  { value: 4, emoji: "🙂", key: "good" },
-  { value: 5, emoji: "😊", key: "great" },
+  { value: 1, emoji: "🌑" },
+  { value: 2, emoji: "🌧️" },
+  { value: 3, emoji: "☁️" },
+  { value: 4, emoji: "🌤️" },
+  { value: 5, emoji: "☀️" },
 ];
 
 export default function EmojiScale({ selected, onSelect }) {
   const { t } = useLanguage();
 
   return (
-    <div className="flex justify-between gap-2">
-      {moods.map((m) => (
-        <button
-          key={m.value}
-          onClick={() => onSelect(m.value)}
-          className={`flex flex-col items-center p-3 rounded-xl transition-all ${
-            selected === m.value
-              ? "bg-primary/15 dark:bg-primary/25 scale-110"
-              : "hover:bg-border/50"
-          }`}
-        >
-          <span className="text-3xl">{m.emoji}</span>
-          <span className="text-xs text-muted mt-1">{t(`tracker.moods.${m.key}`)}</span>
-        </button>
-      ))}
+    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+      {moods.map((m) => {
+        const isSelected = selected === m.value;
+        return (
+          <button
+            key={m.value}
+            type="button"
+            onClick={() => onSelect(m.value)}
+            className={`flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl border text-center transition-all cursor-pointer ${
+              isSelected
+                ? "bg-primary text-white border-primary shadow-xs font-semibold scale-102"
+                : "bg-surfaceSubtle hover:bg-border text-muted hover:text-default border-default"
+            }`}
+          >
+            <span className="text-2xl sm:text-3xl mb-1.5">{m.emoji}</span>
+            <span className="text-[11px] font-mono leading-tight">
+              {t(`tracker.moodScale.${m.value}`)}
+            </span>
+          </button>
+        );
+      })}
     </div>
   );
 }

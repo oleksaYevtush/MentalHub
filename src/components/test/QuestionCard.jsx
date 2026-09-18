@@ -1,4 +1,3 @@
-import Card from "../ui/Card";
 import AnswerSlider from "./AnswerSlider";
 import useTestStore from "../../store/useTestStore";
 import { questions } from "../../data/questions";
@@ -10,9 +9,21 @@ export default function QuestionCard() {
   const question = questions[currentQuestion];
 
   return (
-    <Card>
-      <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-6">{t(`test.questions.q${question.id}`)}</h2>
+    <div className="bg-surface border border-default rounded-2xl p-6 sm:p-8 shadow-xs">
+      <div className="flex items-center justify-between border-b border-default/70 pb-3 mb-6">
+        <span className="text-xs font-mono text-muted">
+          {t("test.questionMeta", { current: currentQuestion + 1, total: questions.length })}
+        </span>
+        <span className="text-xs font-mono text-primary font-semibold">
+          {t("test.assessment")}
+        </span>
+      </div>
+
+      <h2 className="text-lg sm:text-xl font-serif font-semibold text-default leading-relaxed mb-8">
+        {t(`test.questions.q${question.id}`)}
+      </h2>
+
       <AnswerSlider onAnswer={(val) => setAnswer(currentQuestion, val)} />
-    </Card>
+    </div>
   );
 }
