@@ -1,7 +1,27 @@
-export function calculateStressLevel(answers) {
-  const total = answers.reduce((sum, a) => sum + a, 0);
-  const max = answers.length * 4;
-  const percent = (total / max) * 100;
+export function calculateStressLevel(answers = []) {
+  // Validate input
+  if (!Array.isArray(answers) || answers.length === 0) {
+    return {
+      level: "low",
+      labelKey: "test.stressLevels.low.label",
+      adviceKey: "test.stressLevels.low.advice",
+    };
+  }
+
+  // Filter valid numeric answers
+  const validAnswers = answers.filter((value) => Number.isFinite(value));
+  if (validAnswers.length === 0) {
+    return {
+      level: "low",
+      labelKey: "test.stressLevels.low.label",
+      adviceKey: "test.stressLevels.low.advice",
+    };
+  }
+
+  // Calculate stress percentage
+  const total = validAnswers.reduce((sum, a) => sum + Number(a), 0);
+  const max = validAnswers.length * 4;
+  const percent = max > 0 ? (total / max) * 100 : 0;
 
   if (percent < 33) {
     return {
