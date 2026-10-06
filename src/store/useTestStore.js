@@ -15,7 +15,10 @@ const useTestStore = create((set, get) => ({
   nextQuestion: () => {
     const next = get().currentQuestion + 1;
     if (next >= questions.length) {
-      set({ isFinished: true });
+      set({
+        currentQuestion: questions.length - 1,
+        isFinished: true,
+      });
     } else {
       set({ currentQuestion: next });
     }

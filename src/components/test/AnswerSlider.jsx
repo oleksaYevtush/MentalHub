@@ -6,7 +6,7 @@ const labelsKeys = ["never", "rarely", "sometimes", "often", "always"];
 
 export default function AnswerSlider({ onAnswer }) {
   const { t } = useLanguage();
-  const [value, setValue] = useState(2);
+  const [value, setValue] = useState(null);
   const { nextQuestion } = useTestStore();
 
   const handleSelect = (idx) => {
@@ -14,6 +14,7 @@ export default function AnswerSlider({ onAnswer }) {
   };
 
   const handleNext = () => {
+    if (value === null || value === undefined) return;
     onAnswer(value);
     nextQuestion();
   };
@@ -48,7 +49,7 @@ export default function AnswerSlider({ onAnswer }) {
           type="range"
           min={0}
           max={4}
-          value={value}
+          value={value ?? 2}
           onChange={(e) => setValue(Number(e.target.value))}
           className="w-full accent-primary cursor-pointer"
         />
@@ -60,7 +61,12 @@ export default function AnswerSlider({ onAnswer }) {
 
       <button
         onClick={handleNext}
-        className="w-full py-3.5 px-6 rounded-xl bg-primary hover:bg-primary-hover text-white font-mono font-semibold text-sm transition-colors cursor-pointer shadow-xs"
+        disabled={value === null || value === undefined}
+        className={`w-full py-3.5 px-6 rounded-xl font-mono font-semibold text-sm transition-colors shadow-xs ${
+          value === null || value === undefined
+            ? "bg-surfaceSubtle text-muted border border-default cursor-not-allowed opacity-60"
+            : "bg-primary hover:bg-primary-hover text-white cursor-pointer"
+        }`}
       >
         {t("test.next")} →
       </button>

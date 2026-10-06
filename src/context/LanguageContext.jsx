@@ -4,12 +4,15 @@ import { translations } from "../data/translations";
 const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
-  const [locale, setLocale] = useState(
-    localStorage.getItem("locale") || "uk"
-  );
+  const [locale, setLocale] = useState(() => {
+    if (typeof window === "undefined") return "uk";
+    return window.localStorage.getItem("locale") || "uk";
+  });
 
   useEffect(() => {
-    localStorage.setItem("locale", locale);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("locale", locale);
+    }
   }, [locale]);
 
   const t = (path, params = {}) => {
