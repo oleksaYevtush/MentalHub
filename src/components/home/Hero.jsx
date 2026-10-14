@@ -66,19 +66,6 @@ export default function Hero() {
             <span className="uppercase tracking-wider">{t("hero.masthead")}</span>
           </div>
           <div className="flex items-center gap-4">
-            <div
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface/80 border border-periwinkle/40 shadow-xs backdrop-blur-xs"
-              title="Phlox (#CAA9F3), Verbena (#B37AD4), Periwinkle (#7997E6), Atlantis (#206ABC), Phthalo Blue (#0E155E)"
-            >
-              <span className="w-3 h-3 rounded-full bg-[#CAA9F3] ring-1 ring-black/10 shadow-xs" title="Phlox (#CAA9F3)" />
-              <span className="w-3 h-3 rounded-full bg-[#B37AD4] ring-1 ring-black/10 shadow-xs" title="Verbena (#B37AD4)" />
-              <span className="w-3 h-3 rounded-full bg-[#7997E6] ring-1 ring-black/10 shadow-xs" title="Periwinkle (#7997E6)" />
-              <span className="w-3 h-3 rounded-full bg-[#206ABC] ring-1 ring-black/10 shadow-xs" title="Atlantis (#206ABC)" />
-              <span className="w-3 h-3 rounded-full bg-[#0E155E] ring-1 ring-white/20 shadow-xs" title="Phthalo Blue (#0E155E)" />
-              <span className="text-[10px] uppercase font-mono font-bold text-atlantis dark:text-phlox ml-1.5 hidden xs:inline">
-                {t("common.paletteName")}
-              </span>
-            </div>
             <span className="hidden sm:inline">{t("common.anonymous")}</span>
             <span className="font-semibold text-default">2022—2026</span>
           </div>

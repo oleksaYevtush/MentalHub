@@ -125,7 +125,12 @@ export default function BreathingExercise() {
     setPhaseIndex(0);
   };
 
-  const currentPhaseLabel = t(`breathing.protocols.${selectedProtocolKey}.phases.${currentPhaseConfig.key}`);
+  const phaseKey = currentPhaseConfig.key;
+  const currentPhaseLabel =
+    t(`breathing.protocols.${selectedProtocolKey}.phases.${phaseKey}`) ||
+    t(`breathing.protocols.${selectedProtocolKey}.${phaseKey}`) ||
+    t(`breathing.protocols.p${selectedProtocolKey}.${phaseKey}`) ||
+    phaseKey;
 
   return (
     <div className="flex flex-col items-center">
@@ -216,7 +221,7 @@ export default function BreathingExercise() {
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-verbena ring-2 ring-phlox/40 animate-pulse" />
           <span className="font-medium text-default">
-            {isActive ? t("breathing.cycle", { num: cycleCount }) : t("breathing.freeTempo")}
+            {isActive ? t("breathing.cycle", { num: cycleCount, current: cycleCount }) : t("breathing.freeTempo")}
           </span>
         </div>
 

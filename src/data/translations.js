@@ -19,6 +19,7 @@ export const translations = {
       spaceOpen: "Простір відкрито",
       mentalSupport: "Психологічна опора MentalHub",
       careForSelf: "MentalHub • Турбота про себе",
+      selfCare: "Турбота про себе",
       validFeelings: "Ти маєш право відчувати це."
     },
     navbar: {
@@ -85,51 +86,98 @@ export const translations = {
     },
     warEffectsSection: {
       badge: "[ РОЗДІЛ 02 • ПСИХОСОМАТИЧНИЙ АТЛАС ]",
+      tag: "Психосоматичний атлас",
       tagline: "Тіло і біохімія",
+      biochem: "Тіло і біохімія",
+      atlas: "Психосоматичний атлас",
       title: "Як війна відлунює в тілі та психіці",
       subtitle: "Хронічний стрес — це не метафора. Це зміна рівня кортизолу, спазми м'язів, захисне заціпеніння або туман у голові. Вибери зону, щоб дізнатися, що з цим робити:",
+      explore: "Дослідити механізм",
       exploreAction: "Дослідити механізм",
+      reminderTitle: "Важливе нагадування",
+      reminderText: "Фізичні симптоми (стиснуті щелепи, головний біль, тахікардія) — це реальні тілесні реакції. Якщо стан погіршується, проконсультуйся з лікарем або терапевтом.",
+      consultation: "Консультація 24/7",
       calloutTitle: "Важливе нагадування:",
       calloutText: "Фізичні симптоми (стиснуті щелепи, головний біль, тахікардія) — це реальні тілесні реакції. Якщо стан погіршується, проконсультуйся з лікарем або терапевтом.",
       calloutBtn: "Консультація 24/7",
       modalBadge: "Психосоматичний атлас"
     },
-    storiesSection: {
+    silentStoriesSection: {
       badge: "[ АРХІВ ДОСВІДУ ]",
+      tag: "Хроніки досвіду",
       tagline: "Свідчення та щоденники",
+      category: "Свідчення та щоденники",
       title: "Про що ми мовчимо",
       subtitle: "Думки, які ми часто соромимося вимовити вголос, але які щодня проживають тисячі українців. Ти маєш право відчувати все це.",
       all: "Усі",
-      clickToRead: "Натисни, щоб читати ↗",
+      clickToRead: "Натисни, щоб читати",
       resonated: "відгукнулось",
       solidarityTooltip: "Відчуваю те саме",
       footnote: "Усі записи анонімізовані. Твої почуття під час війни легітимні, якими б незручними вони не здавалися.",
+      testimony: "Свідчення",
+      testimonyBadge: "Свідчення"
+    },
+    storiesSection: {
+      badge: "[ АРХІВ ДОСВІДУ ]",
+      tag: "Хроніки досвіду",
+      tagline: "Свідчення та щоденники",
+      category: "Свідчення та щоденники",
+      title: "Про що ми мовчимо",
+      subtitle: "Думки, які ми часто соромимося вимовити вголос, але які щодня проживають тисячі українців. Ти маєш право відчувати все це.",
+      all: "Усі",
+      clickToRead: "Натисни, щоб читати",
+      resonated: "відгукнулось",
+      solidarityTooltip: "Відчуваю те саме",
+      footnote: "Усі записи анонімізовані. Твої почуття під час війни легітимні, якими б незручними вони не здавалися.",
+      testimony: "Свідчення",
       testimonyBadge: "Свідчення"
     },
     breathingSection: {
       badge: "[ РОЗДІЛ 03 • ДИХАЛЬНА ПРАКТИКА ]",
+      tag: "Дихальне святилище",
       tagline: "Нейрорегуляція",
+      neuroregulation: "Нейрорегуляція",
       title: "Дихальне святилище",
       description: "Дихання — єдиний свідомий важіль впливу на блукаючий нерв. Коли серце калатає через новини чи тривогу, правильний видих надсилає мозку сигнал: «Прямо зараз небезпеки немає»."
     },
     breathing: {
       start: "Почати практику",
+      stop: "Зупинити практику",
       pause: "Зупинити практику",
       reset: "Скинути",
       ready: "Готовий почати?",
       clickStart: "Натисни «Почати»",
-      cycle: "Цикл № {current}",
+      pressStart: "Натисни «Почати»",
+      cycle: "Цикл № {num}",
       freePace: "Вільний темп",
+      freeTempo: "Вільний темп",
       soundOn: "🔔 Звук увімкнено",
       soundOff: "🔕 Без звуку",
       soundTooltip: "Тихий звуковий супровід початку фаз",
       protocols: {
+        "478": {
+          name: "4-7-8 (Анти-тривога)",
+          subtitle: "Швидке гальмування симпатичної нервової системи",
+          inhale: "Вдихай носом",
+          hold: "Затримай подих",
+          exhale: "Видихай ротом",
+          phases: {
+            inhale: "Вдихай носом",
+            hold: "Затримай подих",
+            exhale: "Видихай ротом"
+          }
+        },
         p478: {
           name: "4-7-8 (Анти-тривога)",
           subtitle: "Швидке гальмування симпатичної нервової системи",
           inhale: "Вдихай носом",
           hold: "Затримай подих",
-          exhale: "Видихай ротом"
+          exhale: "Видихай ротом",
+          phases: {
+            inhale: "Вдихай носом",
+            hold: "Затримай подих",
+            exhale: "Видихай ротом"
+          }
         },
         box: {
           name: "Квадрат 4-4-4-4",
@@ -137,29 +185,48 @@ export const translations = {
           inhale: "Вдихай",
           hold: "Затримай",
           exhale: "Видихай",
-          pause: "Пауза без повітря"
+          pause: "Пауза без повітря",
+          phases: {
+            inhale: "Вдихай",
+            hold: "Затримай",
+            exhale: "Видихай",
+            pause: "Пауза без повітря"
+          }
         },
         sigh: {
           name: "Фізіологічне зітхання",
           subtitle: "Подвійний вдих + довгий видих для миттєвого розвантаження",
           inhale: "Глибокий вдих",
           hold: "Короткий довдих",
-          exhale: "Повільний видих через рот"
+          exhale: "Повільний видих через рот",
+          phases: {
+            inhale: "Глибокий вдих",
+            hold: "Короткий довдих",
+            exhale: "Повільний видих через рот"
+          }
         }
       }
     },
     symptomsSection: {
       badge: "[ РОЗДІЛ 04 • РЕЄСТР СТАНІВ ]",
+      tag: "Реєстр станів",
       tagline: "Діагностика та роз'яснення",
+      category: "Діагностика та роз'яснення",
       title: "Що з тобою відбувається?",
       subtitle: "Психіка намагається адаптуватися до тривалої загрози. Обери стан, що найбільш схожий на твій — щоб зрозуміти його сенс, алгоритм самодопомоги та червоні прапорці:",
       catalog: "КАТАЛОГ",
+      analysis: "Розбір та поради",
       action: "Розбір та поради",
-      modalBadge: "Реєстр психологічних станів"
+      registry: "Реєстр психологічних станів",
+      modalBadge: "Реєстр психологічних станів",
+      hotlineLabel: "Цілодобова лінія підтримки:",
+      hotlineNumber: "0 800 505 101"
     },
     tipsSection: {
       badge: "[ РОЗДІЛ 05 • ПРОТОКОЛИ СТІЙКОСТІ ]",
+      tag: "Протоколи стійкості",
       tagline: "Статистика та щоденні опори",
+      category: "Статистика та щоденні опори",
       title: "Барометр нації та щоденні опори",
       subtitle: "Ти не один у своєму виснаженні. Реальні дані підтверджують масштаб навантаження на суспільство, а ці базові протоколи допомагають зберегти функціональність:",
       context1: "Опитування Gradus Research / МОЗ",
@@ -211,6 +278,12 @@ export const translations = {
       highLevelSub: "Не залишайся наодинці з цим станом. Звернись за безкоштовною підтримкою."
     },
     test: {
+      tag: "Самооцінка",
+      distressScreening: "Скринінг дистресу",
+      title: "Діагностика рівня стресу та виснаження",
+      subtitle: "Опитувальник допоможе оцінити поточне психоемоційне навантаження. Відповідай чесно, спираючись на те, що ти відчуваєш протягом останніх тижнів.",
+      questionMeta: "Запитання {current} з {total}",
+      assessment: "Оцінка самопочуття",
       progress: "Запитання {num} з {total}",
       next: "Далі",
       retake: "Пройти ще раз",
@@ -289,11 +362,47 @@ export const translations = {
       }
     },
     tracker: {
-      title: "Як ти почуваєшся сьогодні?",
+      tag: "Внутрішній хронікер",
+      contactWithSelf: "Контакт із собою",
+      heading: "Щоденник внутрішнього стану",
+      title: "Як ти почуваєшся прямо зараз?",
+      description: "Війна змушує пригнічувати почуття заради виживання. Фіксація свого стану без самоосуду — це спосіб повернути суб'єктність і помітити моменти відновлення.",
+      confidentiality: "🔒 Твої записи повністю конфіденційні та зберігаються тільки в цьому браузері.",
+      newEntry: "Новий запис",
+      dynamicsTag: "Динаміка ресурсу",
+      lastEntries: "Останні {count} записів",
+      chartTitle: "Динаміка емоційного фону",
+      chartSubtitle: "Візуалізація коливань емоційного фону (шкала 1: виснаження → 5: ресурсність)",
+      archiveTag: "Архів станів",
+      totalEntries: "Всього записів: {count}",
+      historyTitle: "Історія спостережень",
       placeholder: "Коротка замітка (за бажанням)...",
       save: "Зберегти",
-      chartTitle: "Динаміка стану за останні 7 записів",
-      historyTitle: "Останні записи",
+      tags: {
+        siren: "🚨 Сирена / Обстріл",
+        insomnia: "💤 Безсоння",
+        talk: "☕ Розмова з близькими",
+        rage: "⚡ Лють / Драйв",
+        brainFog: "🌫️ Туман у голові",
+        fog: "🌫️ Туман у голові",
+        faith: "🇺🇦 Віра в ЗСУ",
+        armedForces: "🇺🇦 Віра в ЗСУ",
+        blackout: "🕯️ Світло / Блекаут",
+        joy: "🌱 Маленька радість"
+      },
+      moodLabels: {
+        1: "Виснаження / Тягар",
+        2: "Тривога / Неспокій",
+        3: "Заціпеніння / Рівно",
+        4: "Проблиски світла",
+        5: "Ресурсність / Опора",
+        bad: "Виснаження / Тягар",
+        anxious: "Тривога / Неспокій",
+        normal: "Заціпеніння / Рівно",
+        good: "Проблиски світла",
+        great: "Опора / Тепло",
+        default: "Зафіксовано"
+      },
       moods: {
         bad: "Погано",
         anxious: "Тривожно",
@@ -339,6 +448,7 @@ export const translations = {
       spaceOpen: "Space is open",
       mentalSupport: "MentalHub Psychological Support",
       careForSelf: "MentalHub • Self-Care",
+      selfCare: "Self-Care",
       validFeelings: "You have the right to feel this."
     },
     navbar: {
@@ -405,51 +515,98 @@ export const translations = {
     },
     warEffectsSection: {
       badge: "[ SECTION 02 • PSYCHOSOMATIC ATLAS ]",
+      tag: "Psychosomatic Atlas",
       tagline: "Body and biochemistry",
+      biochem: "Body and biochemistry",
+      atlas: "Psychosomatic Atlas",
       title: "How war echoes in body and psyche",
       subtitle: "Chronic stress is not a metaphor. It alters cortisol levels, triggers muscle spasms, protective numbness, or brain fog. Select an area to discover practical coping strategies:",
+      explore: "Explore mechanism",
       exploreAction: "Explore mechanism",
+      reminderTitle: "Important reminder",
+      reminderText: "Physical symptoms (clenched jaws, headaches, tachycardia) are real somatic reactions. If your condition deteriorates, consult a family doctor or therapist.",
+      consultation: "24/7 Consultation",
       calloutTitle: "Important reminder:",
       calloutText: "Physical symptoms (clenched jaws, headaches, tachycardia) are real somatic reactions. If your condition deteriorates, consult a family doctor or therapist.",
       calloutBtn: "24/7 Consultation",
       modalBadge: "Psychosomatic Atlas"
     },
-    storiesSection: {
+    silentStoriesSection: {
       badge: "[ ARCHIVE OF EXPERIENCE ]",
+      tag: "Experience Archive",
       tagline: "Testimonies & diaries",
+      category: "Testimonies & diaries",
       title: "What we keep silent about",
       subtitle: "Thoughts we are often ashamed to utter aloud, but which thousands of Ukrainians experience daily. You have every right to feel all of this.",
       all: "All",
-      clickToRead: "Click to read ↗",
+      clickToRead: "Click to read",
       resonated: "resonated",
       solidarityTooltip: "I feel the same",
       footnote: "All entries are anonymized. Your feelings during war are entirely valid, no matter how uncomfortable they may feel.",
+      testimony: "Testimony",
+      testimonyBadge: "Testimony"
+    },
+    storiesSection: {
+      badge: "[ ARCHIVE OF EXPERIENCE ]",
+      tag: "Experience Archive",
+      tagline: "Testimonies & diaries",
+      category: "Testimonies & diaries",
+      title: "What we keep silent about",
+      subtitle: "Thoughts we are often ashamed to utter aloud, but which thousands of Ukrainians experience daily. You have every right to feel all of this.",
+      all: "All",
+      clickToRead: "Click to read",
+      resonated: "resonated",
+      solidarityTooltip: "I feel the same",
+      footnote: "All entries are anonymized. Your feelings during war are entirely valid, no matter how uncomfortable they may feel.",
+      testimony: "Testimony",
       testimonyBadge: "Testimony"
     },
     breathingSection: {
       badge: "[ SECTION 03 • BREATHING PRACTICE ]",
+      tag: "Breathing Sanctuary",
       tagline: "Neuroregulation",
+      neuroregulation: "Neuroregulation",
       title: "Breathing Sanctuary",
       description: "Breathing is the only conscious lever to modulate the vagus nerve. When your heart pounds from distressing news or panic, a slow exhale sends a clear signal to your brain: 'Right now, there is no immediate danger.'"
     },
     breathing: {
       start: "Start practice",
+      stop: "Stop practice",
       pause: "Stop practice",
       reset: "Reset",
       ready: "Ready to begin?",
       clickStart: "Click 'Start'",
-      cycle: "Cycle #{current}",
+      pressStart: "Click 'Start'",
+      cycle: "Cycle #{num}",
       freePace: "Free pace",
+      freeTempo: "Free pace",
       soundOn: "🔔 Sound on",
       soundOff: "🔕 Sound muted",
       soundTooltip: "Gentle acoustic chime at phase transition",
       protocols: {
+        "478": {
+          name: "4-7-8 (Anti-Anxiety)",
+          subtitle: "Rapid downregulation of the sympathetic nervous system",
+          inhale: "Inhale through nose",
+          hold: "Hold breath",
+          exhale: "Exhale through mouth",
+          phases: {
+            inhale: "Inhale through nose",
+            hold: "Hold breath",
+            exhale: "Exhale through mouth"
+          }
+        },
         p478: {
           name: "4-7-8 (Anti-Anxiety)",
           subtitle: "Rapid downregulation of the sympathetic nervous system",
           inhale: "Inhale through nose",
           hold: "Hold breath",
-          exhale: "Exhale through mouth"
+          exhale: "Exhale through mouth",
+          phases: {
+            inhale: "Inhale through nose",
+            hold: "Hold breath",
+            exhale: "Exhale through mouth"
+          }
         },
         box: {
           name: "Box 4-4-4-4",
@@ -457,29 +614,48 @@ export const translations = {
           inhale: "Inhale",
           hold: "Hold",
           exhale: "Exhale",
-          pause: "Pause empty"
+          pause: "Pause empty",
+          phases: {
+            inhale: "Inhale",
+            hold: "Hold",
+            exhale: "Exhale",
+            pause: "Pause empty"
+          }
         },
         sigh: {
           name: "Physiological Sigh",
           subtitle: "Double inhale + prolonged exhale for instant cognitive reset",
           inhale: "Deep inhale",
           hold: "Short top-up inhale",
-          exhale: "Slow exhale through mouth"
+          exhale: "Slow exhale through mouth",
+          phases: {
+            inhale: "Deep inhale",
+            hold: "Short top-up inhale",
+            exhale: "Slow exhale through mouth"
+          }
         }
       }
     },
     symptomsSection: {
       badge: "[ SECTION 04 • REGISTRY OF STATES ]",
+      tag: "Registry of States",
       tagline: "Diagnostics & explanations",
+      category: "Diagnostics & explanations",
       title: "What is happening to you?",
       subtitle: "The psyche is trying to adapt to prolonged threat. Select the state most similar to your experience to understand its biological mechanism, self-help protocols, and red flags:",
       catalog: "CATALOG",
+      analysis: "Analysis & self-help",
       action: "Analysis & self-help",
-      modalBadge: "Registry of Psychological States"
+      registry: "Registry of Psychological States",
+      modalBadge: "Registry of Psychological States",
+      hotlineLabel: "24/7 Support Helpline:",
+      hotlineNumber: "0 800 505 101"
     },
     tipsSection: {
       badge: "[ SECTION 05 • RESILIENCE PROTOCOLS ]",
+      tag: "Resilience Protocols",
       tagline: "Statistics & daily anchors",
+      category: "Statistics & daily anchors",
       title: "National Barometer & Daily Anchors",
       subtitle: "You are not alone in your exhaustion. Verified data reflects the societal scale of psychological strain, and these evidence-based protocols help preserve functional balance:",
       context1: "Gradus Research / Ministry of Health survey",
@@ -531,6 +707,12 @@ export const translations = {
       highLevelSub: "Do not remain isolated in this state. Contact free professional support lines."
     },
     test: {
+      tag: "Self-Assessment",
+      distressScreening: "Distress Screening",
+      title: "Stress & Exhaustion Assessment",
+      subtitle: "This questionnaire evaluates your current psycho-emotional burden. Answer honestly based on your experience over the past two weeks.",
+      questionMeta: "Question {current} of {total}",
+      assessment: "Well-being Evaluation",
       progress: "Question {num} of {total}",
       next: "Next",
       retake: "Retake test",
@@ -609,11 +791,47 @@ export const translations = {
       }
     },
     tracker: {
-      title: "How are you feeling today?",
+      tag: "Inner Chronicler",
+      contactWithSelf: "Connecting with oneself",
+      heading: "Inner State Journal",
+      title: "How are you feeling right now?",
+      description: "War compels us to suppress emotions for raw survival. Recording your state without self-judgment helps reclaim agency and detect glimpses of recovery.",
+      confidentiality: "🔒 Your records are completely confidential and stored only within this browser.",
+      newEntry: "New entry",
+      dynamicsTag: "Resource Dynamics",
+      lastEntries: "Last {count} entries",
+      chartTitle: "Mood trend over recent entries",
+      chartSubtitle: "Visual trajectory of emotional equilibrium (scale 1: exhaustion → 5: grounded resilience)",
+      archiveTag: "Archive of States",
+      totalEntries: "Total entries: {count}",
+      historyTitle: "Recent entries",
       placeholder: "Brief note (optional)...",
       save: "Save",
-      chartTitle: "Mood trend over the last 7 entries",
-      historyTitle: "Recent entries",
+      tags: {
+        siren: "🚨 Air raid / Shelling",
+        insomnia: "💤 Insomnia",
+        talk: "☕ Chat with loved ones",
+        rage: "⚡ Rage / Drive",
+        brainFog: "🌫️ Brain fog",
+        fog: "🌫️ Brain fog",
+        faith: "🇺🇦 Faith in Armed Forces",
+        armedForces: "🇺🇦 Faith in Armed Forces",
+        blackout: "🕯️ Blackout / Power cut",
+        joy: "🌱 Small joy"
+      },
+      moodLabels: {
+        1: "Exhaustion / Heavy burden",
+        2: "Anxiety / Restlessness",
+        3: "Numbness / Steady",
+        4: "Glimmers of light",
+        5: "Anchored / Warmth",
+        bad: "Exhaustion / Heavy burden",
+        anxious: "Anxiety / Restlessness",
+        normal: "Numbness / Steady",
+        good: "Glimmers of light",
+        great: "Anchored / Warmth",
+        default: "Logged"
+      },
       moods: {
         bad: "Bad",
         anxious: "Anxious",
@@ -659,6 +877,7 @@ export const translations = {
       spaceOpen: "Bereich aktiv",
       mentalSupport: "MentalHub Seelischer Beistand",
       careForSelf: "MentalHub • Selbstfürsorge",
+      selfCare: "Selbstfürsorge",
       validFeelings: "Du hast das Recht, all das zu fühlen."
     },
     navbar: {
@@ -725,51 +944,98 @@ export const translations = {
     },
     warEffectsSection: {
       badge: "[ ABSCHNITT 02 • PSYCHOSOMATISCHER ATLAS ]",
+      tag: "Psychosomatischer Atlas",
       tagline: "Körper und Biochemie",
+      biochem: "Körper und Biochemie",
+      atlas: "Psychosomatischer Atlas",
       title: "Wie der Krieg in Körper und Psyche nachhallt",
       subtitle: "Chronischer Stress ist keine Metapher. Es sind veränderte Cortisolspiegel, Muskelverspannungen, schützende Erstarrung oder Gehirnnebel. Wähle einen Bereich, um Lösungsansätze zu entdecken:",
+      explore: "Mechanismus erforschen",
       exploreAction: "Mechanismus erforschen",
+      reminderTitle: "Wichtige Erinnerung",
+      reminderText: "Körperliche Symptome (verkrampfte Kiefer, Kopfschmerzen, Herzrasen) sind reale körperliche Reaktionen. Wenn Beschwerden anhalten, wende dich an einen Arzt oder Therapeuten.",
+      consultation: "24/7 Beratung",
       calloutTitle: "Wichtige Erinnerung:",
       calloutText: "Körperliche Symptome (verkrampfte Kiefer, Kopfschmerzen, Herzrasen) sind reale körperliche Reaktionen. Wenn Beschwerden anhalten, wende dich an einen Arzt oder Therapeuten.",
       calloutBtn: "24/7 Beratung",
       modalBadge: "Psychosomatischer Atlas"
     },
-    storiesSection: {
+    silentStoriesSection: {
       badge: "[ ERFAHRUNGSARCHIV ]",
+      tag: "Erfahrungsarchiv",
       tagline: "Zeugnisse & Tagebücher",
+      category: "Zeugnisse & Tagebücher",
       title: "Worüber wir schweigen",
       subtitle: "Gedanken, die wir uns oft schämen laut auszusprechen, die aber täglich tausende Ukrainer erleben. Du hast das Recht, all das zu fühlen.",
       all: "Alle",
-      clickToRead: "Klicken zum Lesen ↗",
+      clickToRead: "Klicken zum Lesen",
       resonated: "mitgefühlt",
       solidarityTooltip: "Ich fühle genauso",
       footnote: "Alle Einträge sind anonymisiert. Deine Gefühle im Krieg sind berechtigt, ganz gleich wie unbequem sie wirken.",
+      testimony: "Zeugnis",
+      testimonyBadge: "Zeugnis"
+    },
+    storiesSection: {
+      badge: "[ ERFAHRUNGSARCHIV ]",
+      tag: "Erfahrungsarchiv",
+      tagline: "Zeugnisse & Tagebücher",
+      category: "Zeugnisse & Tagebücher",
+      title: "Worüber wir schweigen",
+      subtitle: "Gedanken, die wir uns oft schämen laut auszusprechen, die aber täglich tausende Ukrainer erleben. Du hast das Recht, all das zu fühlen.",
+      all: "Alle",
+      clickToRead: "Klicken zum Lesen",
+      resonated: "mitgefühlt",
+      solidarityTooltip: "Ich fühle genauso",
+      footnote: "Alle Einträge sind anonymisiert. Deine Gefühle im Krieg sind berechtigt, ganz gleich wie unbequem sie wirken.",
+      testimony: "Zeugnis",
       testimonyBadge: "Zeugnis"
     },
     breathingSection: {
       badge: "[ ABSCHNITT 03 • ATEMPRAXIS ]",
+      tag: "Atem-Zufluchtsort",
       tagline: "Neuroregulation",
+      neuroregulation: "Neuroregulation",
       title: "Atem-Zufluchtsort",
       description: "Die Atmung ist der einzige bewusste Hebel zur Regulierung des Vagusnervs. Wenn das Herz rast, sendet ein langes Ausatmen dem Gehirn die Botschaft: 'Genau in diesem Augenblick besteht keine unmittelbare Gefahr'."
     },
     breathing: {
       start: "Übung starten",
+      stop: "Übung stoppen",
       pause: "Übung stoppen",
       reset: "Zurücksetzen",
       ready: "Bereit anzufangen?",
       clickStart: "Klicke auf 'Start'",
-      cycle: "Zyklus Nr. {current}",
+      pressStart: "Klicke auf 'Start'",
+      cycle: "Zyklus Nr. {num}",
       freePace: "Freies Tempo",
+      freeTempo: "Freies Tempo",
       soundOn: "🔔 Ton an",
       soundOff: "🔕 Stumm",
       soundTooltip: "Sanfter akustischer Ton zu Beginn jeder Phase",
       protocols: {
+        "478": {
+          name: "4-7-8 (Anti-Angst)",
+          subtitle: "Schnelle Dämpfung des sympathischen Nervensystems",
+          inhale: "Durch die Nase einatmen",
+          hold: "Atem anhalten",
+          exhale: "Durch den Mund ausatmen",
+          phases: {
+            inhale: "Durch die Nase einatmen",
+            hold: "Atem anhalten",
+            exhale: "Durch den Mund ausatmen"
+          }
+        },
         p478: {
           name: "4-7-8 (Anti-Angst)",
           subtitle: "Schnelle Dämpfung des sympathischen Nervensystems",
           inhale: "Durch die Nase einatmen",
           hold: "Atem anhalten",
-          exhale: "Durch den Mund ausatmen"
+          exhale: "Durch den Mund ausatmen",
+          phases: {
+            inhale: "Durch die Nase einatmen",
+            hold: "Atem anhalten",
+            exhale: "Durch den Mund ausatmen"
+          }
         },
         box: {
           name: "Box-Atmung 4-4-4-4",
@@ -777,29 +1043,48 @@ export const translations = {
           inhale: "Einatmen",
           hold: "Anhalten",
           exhale: "Ausatmen",
-          pause: "Pause ohne Luft"
+          pause: "Pause ohne Luft",
+          phases: {
+            inhale: "Einatmen",
+            hold: "Anhalten",
+            exhale: "Ausatmen",
+            pause: "Pause ohne Luft"
+          }
         },
         sigh: {
           name: "Physiologischer Seufzer",
           subtitle: "Doppelter Einatem + langes Ausatmen für sofortige Entlastung",
           inhale: "Tief einatmen",
           hold: "Kurzes Nacheinatmen",
-          exhale: "Langsam durch den Mund ausatmen"
+          exhale: "Langsam durch den Mund ausatmen",
+          phases: {
+            inhale: "Tief einatmen",
+            hold: "Kurzes Nacheinatmen",
+            exhale: "Langsam durch den Mund ausatmen"
+          }
         }
       }
     },
     symptomsSection: {
       badge: "[ ABSCHNITT 04 • ZUSTANDSREGISTER ]",
+      tag: "Zustandsregister",
       tagline: "Diagnose & Erläuterungen",
+      category: "Diagnose & Erläuterungen",
       title: "Was geschieht mit dir?",
       subtitle: "Die Psyche versucht, sich an eine anhaltende Bedrohung anzupassen. Wähle den Zustand, der deiner Verfassung am nächsten kommt, um Sinn, Selbsthilfeschritte und Warnsignale zu verstehen:",
       catalog: "KATALOG",
+      analysis: "Analyse & Tipps",
       action: "Analyse & Tipps",
-      modalBadge: "Register psychischer Zustände"
+      registry: "Register psychischer Zustände",
+      modalBadge: "Register psychischer Zustände",
+      hotlineLabel: "24/7 Krisen-Hotline:",
+      hotlineNumber: "0 800 505 101"
     },
     tipsSection: {
       badge: "[ ABSCHNITT 05 • RESILIENZPROTOKOLLE ]",
+      tag: "Resilienzprotokolle",
       tagline: "Statistiken & tägliche Anker",
+      category: "Statistiken & tägliche Anker",
       title: "Nationales Barometer & Tägliche Anker",
       subtitle: "Du bist mit deiner Erschöpfung nicht allein. Verifizierte Daten spiegeln das gesamtgesellschaftliche Ausmaß wider, und diese Grundprotokolle helfen dir, handlungsfähig zu bleiben:",
       context1: "Umfrage von Gradus Research / Gesundheitsministerium",
@@ -851,6 +1136,12 @@ export const translations = {
       highLevelSub: "Bleibe mit diesem Zustand nicht allein. Wende dich an kostenlose Krisenhelfer."
     },
     test: {
+      tag: "Selbstbewertung",
+      distressScreening: "Belastungs-Screening",
+      title: "Stress- & Erschöpfungsdiagnostik",
+      subtitle: "Dieser Fragebogen hilft, deine aktuelle psycho-emotionale Belastung zu ermitteln. Antworte aufrichtig, basierend auf deinen Gefühlen der letzten Wochen.",
+      questionMeta: "Frage {current} von {total}",
+      assessment: "Wohlbefinden-Bewertung",
       progress: "Frage {num} von {total}",
       next: "Weiter",
       retake: "Erneut versuchen",
@@ -929,11 +1220,47 @@ export const translations = {
       }
     },
     tracker: {
-      title: "Wie fühlst du dich heute?",
+      tag: "Innerer Chronist",
+      contactWithSelf: "Kontakt mit sich selbst",
+      heading: "Tagebuch des inneren Zustands",
+      title: "Wie fühlst du dich gerade jetzt?",
+      description: "Der Krieg zwingt dazu, Gefühle fürs Überleben zu dämpfen. Das wertfreie Erfassen deines Befindens stärkt die Selbstbestimmung und macht Erholung sichtbar.",
+      confidentiality: "🔒 Deine Notizen sind vollständig vertraulich und werden ausschließlich in diesem Browser gesichert.",
+      newEntry: "Neuer Eintrag",
+      dynamicsTag: "Ressourcendynamik",
+      lastEntries: "Letzte {count} Einträge",
+      chartTitle: "Stimmungsverlauf über letzte Einträge",
+      chartSubtitle: "Visualisierung des seelischen Gleichgewichts (Skala 1: Erschöpfung → 5: innere Kraft)",
+      archiveTag: "Zustandsarchiv",
+      totalEntries: "Einträge insgesamt: {count}",
+      historyTitle: "Letzte Einträge",
       placeholder: "Kurze Notiz (optional)...",
       save: "Speichern",
-      chartTitle: "Verlauf der letzten 7 Einträge",
-      historyTitle: "Letzte Einträge",
+      tags: {
+        siren: "🚨 Luftalarm / Beschuss",
+        insomnia: "💤 Schlaflosigkeit",
+        talk: "☕ Gespräch mit Liebsten",
+        rage: "⚡ Wut / Tatendrang",
+        brainFog: "🌫️ Gehirnnebel",
+        fog: "🌫️ Gehirnnebel",
+        faith: "🇺🇦 Glaube an Streitkräfte",
+        armedForces: "🇺🇦 Glaube an Streitkräfte",
+        blackout: "🕯️ Stromausfall / Blackout",
+        joy: "🌱 Kleine Freude"
+      },
+      moodLabels: {
+        1: "Erschöpfung / Schwere Last",
+        2: "Angst / Innere Unruhe",
+        3: "Erstarrung / Neutral",
+        4: "Lichtblicke",
+        5: "Halt / Geborgenheit",
+        bad: "Erschöpfung / Schwere Last",
+        anxious: "Angst / Innere Unruhe",
+        normal: "Erstarrung / Neutral",
+        good: "Lichtblicke",
+        great: "Halt / Geborgenheit",
+        default: "Erfasst"
+      },
       moods: {
         bad: "Schlecht",
         anxious: "Ängstlich",
