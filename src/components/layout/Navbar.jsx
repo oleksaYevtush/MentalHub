@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
 
 export default function Navbar() {
-  const { locale, setLocale, t } = useLanguage();
+  const { locale, changeLanguage, supportedLanguages, t } = useLanguage();
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") || "light"
   );
@@ -74,11 +74,18 @@ export default function Navbar() {
           </a>
 
           {/* Language Switcher */}
-          <div className="flex items-center bg-surfaceSubtle p-0.5 rounded-lg border border-default">
-            {["uk", "en", "de"].map((lang) => (
+          <div
+            className="flex items-center bg-surfaceSubtle p-0.5 rounded-lg border border-default"
+            role="group"
+            aria-label="Language"
+          >
+            {(supportedLanguages || ["uk", "en", "de"]).map((lang) => (
               <button
                 key={lang}
-                onClick={() => setLocale(lang)}
+                type="button"
+                onClick={() => changeLanguage(lang)}
+                aria-pressed={locale === lang}
+                aria-label={`Switch language to ${lang.toUpperCase()}`}
                 className={`px-2 py-1 text-[11px] font-mono font-bold rounded uppercase transition-all duration-150 cursor-pointer ${
                   locale === lang
                     ? "bg-surface text-primary shadow-xs font-extrabold border border-border"
@@ -161,6 +168,26 @@ export default function Navbar() {
             <a href="tel:0800505101" className="font-mono font-bold text-secondary">
               0 800 505 101
             </a>
+          </div>
+
+          <div className="pt-2 flex items-center justify-between text-xs text-muted">
+            <span>Мова / Language:</span>
+            <div className="flex items-center bg-surfaceSubtle p-0.5 rounded-lg border border-default">
+              {(supportedLanguages || ["uk", "en", "de"]).map((lang) => (
+                <button
+                  key={lang}
+                  type="button"
+                  onClick={() => changeLanguage(lang)}
+                  className={`px-2.5 py-1 text-xs font-mono font-bold rounded uppercase transition-all duration-150 cursor-pointer ${
+                    locale === lang
+                      ? "bg-surface text-primary shadow-xs font-extrabold border border-border"
+                      : "text-muted hover:text-default"
+                  }`}
+                >
+                  {lang}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}
